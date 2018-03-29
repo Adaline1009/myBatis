@@ -1,0 +1,49 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alt.hrm.mappers.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.alt.hrm.model.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="email" property="email" />
+        <association column="address_id" property="address"  resultMap="AddressResultMap"/>
+               <!--      javaType="com.alt.hrm.model.Address">
+            <id column="id" property="id" />
+            <result column="city" property="city" />
+            <result column="street" property="street" />
+          
+        </association>  -->
+        <collection property="books" resultMap="BookResultMap"/>
+    </resultMap>
+
+
+    <resultMap id="AddressResultMap" type="com.alt.hrm.model.Address">
+        <id column="id" property="id" />
+        <result column="city" property="city" />
+        <result column="street" property="street" />
+    </resultMap>
+
+    <resultMap id="BookResultMap" type="com.alt.hrm.model.Book">
+        <id column="b_id" property="id" />
+        <result column="b_name" property="name" />
+    </resultMap>
+
+
+    <select id="findAllUsers" resultMap="UserResultMap">
+        select * from users u INNER JOIN address a on u.address_id=a.id
+        left JOIN user_book ub on ub.user_id=u.id
+         inner JOIN book b on b.b_id= ub.book_id
+
+    </select>
+
+    <select id="findUserById" resultMap="UserResultMap">
+        select id, name, email from users WHERE id=#{id}
+    </select>
+
+    <insert id="insertUser" parameterType="com.alt.hrm.model.User" >
+        insert into users(id,name,email) values(#{id},#{name},#{email})
+    </insert>
+</mapper>
+        
