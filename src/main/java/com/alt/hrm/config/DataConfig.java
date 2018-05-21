@@ -31,8 +31,6 @@ public class DataConfig {
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setTypeAliasesPackage("com/alt/hrm/model");
         sessionFactory.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
-        //Resource mapperResource = new ClassPathResource("com/alt/hrm/mappers");
-       // sessionFactory.setMapperLocations(new Resource[] {mapperResource});
         return sessionFactory.getObject();
     }
 }

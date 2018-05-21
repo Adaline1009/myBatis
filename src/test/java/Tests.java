@@ -30,19 +30,4 @@ public class Tests
         assertTrue(!users.isEmpty());
     }
 
-/*
-    @Test
-    public void findUserById() {
-        User user = userMapper.findUserById(1);
-        assertNotNull(user);
-    }
-*/
- /*   @Test
-    public void createUser() {
-        User user = new User(0, "Siva", "siva@gmail.com");
-        userMapper.insertUser(user);
-        User newUser = userMapper.findUserById(user.getId());
-        assertEquals("Siva", newUser.getName());
-        assertEquals("siva@gmail.com", newUser.getEmail());
-    }*/
 }

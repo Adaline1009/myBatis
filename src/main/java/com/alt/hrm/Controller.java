@@ -17,10 +17,7 @@ class Controller {
 
     @GetMapping("/{id}")
     @CrossOrigin
-    public List<User> getClubById(@PathVariable Integer id) {
-    //    User user = new User(1, "Siva", "siva@gmail.com");
-
-       // userMapper.insertUser(user);
+    public List<User> getUserById(@PathVariable Integer id) {
 
         return userMapper.findAllUsers();
     }

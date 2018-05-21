@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 
 
 public class Address {
+    private int id;
+    private String city;
+    private String street;
+
     public int getId() {
         return id;
     }
@@ -29,7 +33,5 @@ public class Address {
         this.street = street;
     }
 
-    int id;
-    String city;
-    String street;
+
 }
